@@ -7,7 +7,7 @@ let chaiCheerio = require('chai-cheerio');
 chai.use(chaiCheerio);
 let should = chai.should();
 let expect = chai.expect;
-let $ = cheerio.load(fs.readFileSync(path.join(__dirname,'../src/public/index.html')));
+let $ = cheerio.load(fs.readFileSync(path.join(__dirname,'../dist/public/index.html')));
 
 describe('GET /index.html', () => {
 
