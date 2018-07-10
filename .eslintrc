@@ -1,0 +1,23 @@
+---
+  env:
+    es6: true
+    browser: true
+    node: true
+
+  extends: "eslint:recommended"
+  rules:
+    semi: "error"
+    no-console: "off"
+    no-unused-vars : ["error", { "vars": "all", "args": "none" }]
+    no-undef: "error"
+    no-alert: "error"
+    space-before-function-paren: ["error", "always"]
+    function-paren-newline: ["error", "consistent"]
+    quote-props: ["error", "consistent-as-needed"]
+    object-curly-newline: ["error", { "consistent": true }]
+    no-return-assign: ["error", "except-parens"]
+    camelcase: "warn"
+
+
+  parserOptions:
+    sourceType: "module"
