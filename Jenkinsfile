@@ -11,6 +11,7 @@ pipeline {
         sh 'npm run build'
       }
     }
+<<<<<<< HEAD
     stage('Test') {
       steps {
         sh 'npm test'
@@ -33,5 +34,7 @@ ssh -o StrictHostKeyChecking=no ${TARGET_SERVER_USER}@${TARGET_SERVER_HOST} \\
   environment {
     TARGET_SERVER_USER = 'ec2-user'
     TARGET_SERVER_HOST = '52.15.213.43'
+=======
+>>>>>>> parent of 5fbc7ed... Stage test
   }
 }
