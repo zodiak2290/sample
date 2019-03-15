@@ -14,18 +14,17 @@ pipeline {
     stage('Test') {
       steps {
         sh 'npm test'
+        emailext(subject: 'Aprobar', body: 'Por favor aprueba', attachLog: true, to: 'gabo')
+      }
+    }
+    stage('Aprove') {
+      steps {
+        input(message: 'Aprobar?', submitter: 'gabo')
       }
     }
     stage('Deploy') {
       steps {
-        sh '''echo "Transfering files ..."
-sftp -o StrictHostKeyChecking=no -b deploy.sh ${TARGET_SERVER_USER}@${TARGET_SERVER_HOST}
-echo "Setup environment ..."
-ssh -o StrictHostKeyChecking=no ${TARGET_SERVER_USER}@${TARGET_SERVER_HOST} \\
-  \'cd me && npm install --production\'
-echo "Restart services ..." 
-ssh -o StrictHostKeyChecking=no ${TARGET_SERVER_USER}@${TARGET_SERVER_HOST} \\
-  \'cd me && pm2 startOrRestart ecosystem.config.json --env production && pm2 save\''''
+        emailext(subject: 'Deployment', body: 'Se envio a PROD', to: 'fabian', attachLog: true)
       }
     }
   }
