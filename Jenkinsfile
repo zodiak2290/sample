@@ -16,5 +16,15 @@ pipeline {
         sh 'npm test '
       }
     }
+    stage('Approve') {
+      steps {
+        input(message: 'se aprueba?', submitter: 'alberto')
+      }
+    }
+    stage('deply') {
+      steps {
+        echo 'succesfull'
+      }
+    }
   }
 }
