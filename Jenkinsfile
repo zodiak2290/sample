@@ -26,5 +26,10 @@ pipeline {
         echo 'succesfull'
       }
     }
+    stage('aprobar') {
+      steps {
+        emailext(subject: 'aprobar', body: 'aprueba', attachLog: true, to: 'alberto')
+      }
+    }
   }
 }
